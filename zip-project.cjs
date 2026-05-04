@@ -1,55 +1,39 @@
 /**
- * zip-project.js
- * Creates sef-kebap.zip from the entire project folder.
- * Usage: node zip-project.js
- * Requires: npm install archiver
+ * zip-project.cjs
+ * Packages the sef-kebap-v4 project into sef-kebap-v4.zip
+ * Usage: node zip-project.cjs
+ * Requires: npm install archiver (already in devDependencies)
  */
 
 const archiver = require('archiver')
-const fs = require('fs')
-const path = require('path')
+const fs       = require('fs')
+const path     = require('path')
 
-const OUTPUT_FILE = 'sef-kebap.zip'
-const SOURCE_DIR = __dirname // current directory (project root)
+const OUTPUT  = 'sef-kebap-v4.zip'
+const EXCLUDE = ['node_modules', '.git', 'dist', OUTPUT]
 
-// Files/folders to exclude from the zip
-const EXCLUDED = ['node_modules', '.git', 'dist', OUTPUT_FILE]
-
-const output = fs.createWriteStream(path.join(__dirname, OUTPUT_FILE))
+const out     = fs.createWriteStream(path.join(__dirname, OUTPUT))
 const archive = archiver('zip', { zlib: { level: 9 } })
 
-output.on('close', () => {
-  const bytes = archive.pointer()
-  const kb = (bytes / 1024).toFixed(1)
-  console.log(`\n✅ sef-kebap.zip created successfully!`)
-  console.log(`📦 Total size: ${kb} KB (${bytes} bytes)`)
-  console.log(`📁 Output: ${path.join(__dirname, OUTPUT_FILE)}\n`)
+out.on('close', () => {
+  const kb = (archive.pointer() / 1024).toFixed(1)
+  console.log(`\n✅  ${OUTPUT} oluşturuldu!`)
+  console.log(`📦  Boyut : ${kb} KB`)
+  console.log(`📁  Konum : ${path.join(__dirname, OUTPUT)}\n`)
 })
 
-archive.on('warning', (err) => {
-  if (err.code === 'ENOENT') {
-    console.warn('⚠️  Warning:', err.message)
-  } else {
-    throw err
-  }
-})
+archive.on('warning', err => { if (err.code !== 'ENOENT') throw err })
+archive.on('error',   err => { throw err })
 
-archive.on('error', (err) => {
-  console.error('❌ Error creating zip:', err.message)
-  throw err
-})
+archive.pipe(out)
 
-archive.pipe(output)
-
-// Add entire project directory, excluding node_modules, .git, dist, and the zip itself
 archive.glob('**/*', {
-  cwd: SOURCE_DIR,
-  ignore: EXCLUDED.map(e => `${e}/**`).concat(EXCLUDED),
-  dot: true, // include dotfiles like .gitignore
+  cwd: __dirname,
+  ignore: EXCLUDE.map(e => `${e}/**`).concat(EXCLUDE),
+  dot: true,
 })
 
-console.log(`\n🔄 Creating ${OUTPUT_FILE}...`)
-console.log(`📂 Source: ${SOURCE_DIR}`)
-console.log(`🚫 Excluding: ${EXCLUDED.join(', ')}\n`)
+console.log(`\n🔄  Paketleniyor: ${OUTPUT}`)
+console.log(`🚫  Hariç : ${EXCLUDE.join(', ')}\n`)
 
 archive.finalize()

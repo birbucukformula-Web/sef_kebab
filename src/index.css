@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-size: 22px;
+  }
+
+  body {
+    @apply bg-cream text-charcoal font-sans antialiased;
+    background-color: #FAF7F2;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  ::selection {
+    background: rgba(212,175,55,0.25);
+    color: #2C2C2C;
+  }
+
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #FAF7F2; }
+  ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+}
+
+@layer components {
+  /* Gold divider line */
+  .gold-line {
+    @apply w-12 h-px bg-gold mx-auto;
+  }
+
+  .gold-line-left {
+    @apply w-12 h-px bg-gold;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-20 md:py-28;
+  }
+
+  /* Eyebrow label */
+  .eyebrow {
+    @apply font-accent text-xs tracking-[4px] uppercase text-gold;
+  }
+
+  /* Display heading */
+  .display-lg {
+    @apply font-display text-5xl md:text-6xl lg:text-7xl font-light text-charcoal leading-tight;
+  }
+
+  .display-md {
+    @apply font-display text-4xl md:text-5xl font-light text-charcoal leading-tight;
+  }
+
+  .display-sm {
+    @apply font-display text-3xl md:text-4xl font-light text-charcoal leading-tight;
+  }
+
+  /* Buttons */
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold text-charcoal-dark font-accent font-semibold text-sm tracking-wider px-7 py-3.5 rounded-sm transition-all duration-300 hover:bg-gold-light hover:-translate-y-0.5 hover:shadow-gold;
+  }
+
+  .btn-outline-gold {
+    @apply inline-flex items-center gap-2 border border-gold text-gold font-accent font-semibold text-sm tracking-wider px-7 py-3.5 rounded-sm transition-all duration-300 hover:bg-gold hover:text-charcoal-dark hover:-translate-y-0.5;
+  }
+
+  .btn-outline-charcoal {
+    @apply inline-flex items-center gap-2 border border-charcoal text-charcoal font-accent font-semibold text-sm tracking-wider px-7 py-3.5 rounded-sm transition-all duration-300 hover:bg-charcoal hover:text-cream hover:-translate-y-0.5;
+  }
+
+  /* Card */
+  .card-soft {
+    @apply bg-cream-card rounded-sm border border-gold/10 shadow-soft transition-all duration-300 hover:shadow-soft-md hover:border-gold/25;
+  }
+
+  /* Menu item row */
+  .menu-row {
+    @apply flex items-center justify-between py-4 border-b border-charcoal/10 transition-colors duration-200 hover:bg-gold/5 px-2 -mx-2 rounded-sm cursor-default;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+
+  /* Page entry animation */
+  .page-enter {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}

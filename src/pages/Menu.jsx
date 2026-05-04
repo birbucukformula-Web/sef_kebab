@@ -1,164 +1,425 @@
-import { useState } from 'react'
-import '../styles/Menu.css'
+import { useState, useRef, useEffect } from 'react'
+import PageHero from '../components/PageHero'
+import { ImageIcon } from 'lucide-react'
 
-const menuData = {
-  kebaplar: {
-    icon: '🔥',
-    title: 'Kebaplar',
-    desc: 'Geleneksel Adana usulü, özel baharat karışımıyla marine edilmiş taze et çeşitleri',
-    items: [
-      { name: 'Adana Kebap', desc: 'Kıyma, biber ve baharatlarla hazırlanan imza kebabımız. İnce ekmek ve közlenmiş domates ile servis edilir.', price: '₺280', badges: ['spicy', 'popular'] },
-      { name: 'Urfa Kebap', desc: 'Acısız, aromalı kıyma kebabı. Aile sofraları için ideal.', price: '₺260', badges: ['popular'] },
-      { name: 'Tavuk Şiş', desc: 'Marine edilmiş tavuk göğsü, kömür ateşinde pişirilir.', price: '₺230', badges: [] },
-      { name: 'Karışık Kebap', desc: 'Adana, Urfa ve tavuk şiş üçlüsü. Zengin damak tatları için.', price: '₺340', badges: ['popular'] },
-      { name: 'Kuzu Şiş', desc: 'Özel marine kuzu but şiş. Yavaş ateşte pişirilir.', price: '₺320', badges: ['new'] },
-      { name: 'Patlıcanlı Kebap', desc: 'Közlenmiş patlıcan üzerine Adana kebap. Şef\'in özel sosuyla.', price: '₺300', badges: ['popular'] },
-    ],
-  },
-  izgaralar: {
-    icon: '🥩',
-    title: 'Izgaralar',
-    desc: 'Seçme etlerin kömür mangalında, en doğal haliyle pişirilmiş versiyonları',
-    items: [
-      { name: 'Dana Antrikot', desc: '250gr dana antrikot, yanında közlenmiş sebze ve pilav ile.', price: '₺380', badges: ['popular'] },
-      { name: 'Kuzu Pirzola', desc: 'Taze kuzu pirzola, özel baharat harmanıyla marine edilmiş.', price: '₺360', badges: [] },
-      { name: 'Köfte', desc: 'Ev yapımı ızgara köfte, domates sos ve yoğurtla.', price: '₺220', badges: ['popular'] },
-      { name: 'Karışık Izgara', desc: 'Dana, kuzu ve tavutdan oluşan büyük porsiyonlu tabak.', price: '₺420', badges: ['new'] },
-      { name: 'Tavuk Kanat', desc: 'Baharatlı marine tavuk kanat. Crispy dışı, sulu içi.', price: '₺200', badges: ['spicy'] },
-      { name: 'Balık Izgara', desc: 'Günün taze balığı, limon ve zeytinyağı ile.', price: '₺280', badges: [] },
-    ],
-  },
-  mezeler: {
-    icon: '🫙',
-    title: 'Mezeler',
-    desc: 'Her gün taze hazırlanan geleneksel Türk mezeleri ve salata çeşitleri',
-    items: [
-      { name: 'Haydari', desc: 'Süzme yoğurt, sarımsak ve taze nane ile hazırlanan kremalı meze.', price: '₺80', badges: [] },
-      { name: 'Humus', desc: 'Nohut, tahin ve limondan yapılan geleneksel humus.', price: '₺90', badges: [] },
-      { name: 'Acılı Ezme', desc: 'Domates, biber ve baharatlarla hazırlanan ateşli ezme.', price: '₺75', badges: ['spicy', 'popular'] },
-      { name: 'Mevsim Salatası', desc: 'Taze sebzeler, nar ekşisi ve zeytinyağlı sos.', price: '₺95', badges: [] },
-      { name: 'Közlenmiş Patlıcan', desc: 'Közde pişirilmiş patlıcan, sarımsak ve zeytinyağlı.', price: '₺85', badges: ['popular'] },
-      { name: 'Meze Tabağı', desc: 'Tüm mezelerimizden seçilmiş karışık tabak. İkili paylaşım için.', price: '₺180', badges: ['popular'] },
-    ],
-  },
-  tatlilar: {
-    icon: '🍮',
-    title: 'Tatlılar',
-    desc: 'Geleneksel Türk tatlıları ve özel ev yapımı lezzetlerle sofranızı taçlandırın',
-    items: [
-      { name: 'Künefe', desc: 'Tel kadayıf, taze peynir ve şerbetten oluşan sıcak tatlı. Dondurma ile servis edilir.', price: '₺160', badges: ['popular'] },
-      { name: 'Sütlü Nuriye', desc: 'Sütlü şurupla ıslatılmış baklava. Hafif ve kremamsı.', price: '₺130', badges: ['new'] },
-      { name: 'Baklava', desc: 'Antep fıstığı veya cevizli ev yapımı baklava. Günlük taze.', price: '₺140', badges: ['popular'] },
-      { name: 'Sütlaç', desc: 'Fırında pişirilmiş geleneksel Türk pirinç pudingi.', price: '₺95', badges: [] },
-      { name: 'Kadayıf', desc: 'Şerbetli tel kadayıf, kaymak ve ceviz ile.', price: '₺120', badges: [] },
-      { name: 'Dondurma', desc: 'Günlük taze dondurma çeşitleri. Vanilyalı, çikolatalı veya sakızlı.', price: '₺80', badges: [] },
-    ],
-  },
-}
+/* ═══════════════════════════════════════════════════════
+   FoodImage — görsel alanı
+   ▸ src prop varsa gerçek fotoğrafı gösterir
+   ▸ yoksa şık placeholder gösterir
+   ▸ Gerçek fotoğraf eklemek için:
+       src="/images/adana-kebap.jpg"  →  public/images/ klasörüne koy
+       veya
+       import adanaImg from '../assets/images/adana.jpg'
+       src={adanaImg}
+═══════════════════════════════════════════════════════ */
+function FoodImage({ src, alt, emoji, aspect = 'aspect-[4/3]' }) {
+  const [err, setErr] = useState(false)
 
-const tabOrder = ['kebaplar', 'izgaralar', 'mezeler', 'tatlilar']
+  if (src && !err) {
+    return (
+      <div className={`${aspect} overflow-hidden bg-cream-warm`}>
+        <img
+          src={src}
+          alt={alt}
+          onError={() => setErr(true)}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+    )
+  }
 
-export default function Menu() {
-  const [activeTab, setActiveTab] = useState('hepsi')
-
-  const renderItems = (items) => (
-    <div className="menu-items-grid">
-      {items.map(item => (
-        <div className="menu-item-card" key={item.name}>
-          <div className="menu-item-info">
-            <div className="menu-item-name">{item.name}</div>
-            <div className="menu-item-desc">{item.desc}</div>
-            {item.badges.length > 0 && (
-              <div className="menu-item-badges">
-                {item.badges.map(b => (
-                  <span key={b} className={`menu-badge ${b}`}>
-                    {b === 'spicy' ? '🌶 Acılı' : b === 'popular' ? '⭐ Popüler' : '✦ Yeni'}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
-          <div className="menu-item-price">{item.price}</div>
-        </div>
-      ))}
+  // Placeholder
+  return (
+    <div
+      className={`${aspect} relative overflow-hidden flex flex-col items-center justify-center gap-2
+                  bg-gradient-to-br from-gold/10 via-cream-warm to-cream border-b border-gold/12`}
+    >
+      {/* dot texture */}
+      <div
+        className="absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, #D4AF37 1px, transparent 0)',
+          backgroundSize: '18px 18px',
+        }}
+      />
+      {/* emoji */}
+      <span className="relative z-10 text-4xl transition-transform duration-300 group-hover:scale-110 select-none leading-none">
+        {emoji}
+      </span>
+      {/* label */}
+      <span className="relative z-10 flex items-center gap-1 font-accent text-[9px] tracking-[2px] uppercase text-gold/35">
+        <ImageIcon size={9} />
+        Fotoğraf Eklenecek
+      </span>
     </div>
   )
+}
+
+/* ═══════════════════════════════════════════════════════
+   DATA
+   src: null  →  placeholder gösterir
+   src: '/images/adana.jpg'  →  gerçek fotoğraf gösterir
+═══════════════════════════════════════════════════════ */
+
+const popularItems = [
+  { emoji: '🔥', name: 'Adana Kebap',    desc: 'İmza lezzetimiz, özel baharat karışımı', src: null },
+  { emoji: '🥩', name: 'Lokum Kebap',    desc: '180gr özel kesim, yumuşacık doku',        src: null },
+  { emoji: '🍆', name: 'Patlıcan Kebap', desc: 'Közlenmiş patlıcan üzeri kebap',          src: null },
+  { emoji: '🫙', name: 'Ali Nazik',      desc: 'Patlıcan püresi ve yoğurtla',             src: null },
+  { emoji: '🌯', name: 'Adana Dürüm',   desc: 'El yapımı lavaşta Adana kebap',            src: null },
+  { emoji: '🍗', name: 'Tavuk Kelebek', desc: 'Kelebek kesim tavuk, ızgara',              src: null },
+]
+
+const izgaralar = [
+  { name: 'Lokum Kebap',           emoji: '🥩', note: '180gr',                     src: null },
+  { name: 'Ciğer',                 emoji: '🫀', note: null,                         src: null },
+  { name: 'Ali Nazik',             emoji: '🫙', note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Külbastı',              emoji: '🥩', note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Tavuk Kelebek',         emoji: '🍗', note: null,                         src: null },
+  { name: 'Tavuk Kanat',           emoji: '🍗', note: null,                         src: null },
+  { name: 'Kuzu Kaburga',          emoji: '🍖', note: null,                         src: null },
+  { name: 'Kuşbaşı',               emoji: '🥩', note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'İkiyüzlü Adana Kebap',  emoji: '🔥', note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Sıcak Ezme Üstü Kebap', emoji: '🌶️', note: '1,5 porsiyon seçeneği',    src: null },
+  { name: 'Patlıcan Kebap',        emoji: '🍆', note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Beyti',                  emoji: '🌯', note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Tavuk Şiş',             emoji: '🍢', note: null,                         src: null },
+  { name: 'Kemikli Tavuk Şiş',     emoji: '🍗', note: null,                         src: null },
+  { name: 'Adana Kebap',           emoji: '🔥', note: null,                         src: null },
+  { name: 'Karışık Kebap',         emoji: '🍽️', note: '8 porsiyon tepsi',          src: null },
+]
+
+const durumlar = [
+  { emoji: '🌯', name: 'Adana Dürüm',   desc: 'Adana kebap, el yapımı lavaş',  src: null },
+  { emoji: '🌯', name: 'Urfa Dürüm',    desc: 'Urfa kebap, ince lavaş',         src: null },
+  { emoji: '🌯', name: 'Tavuk Dürüm',   desc: 'Izgara tavuk, taze sebze',       src: null },
+  { emoji: '🌯', name: 'Karışık Dürüm', desc: 'Et + tavuk karışık',             src: null },
+]
+
+const ikramlar = [
+  { emoji: '🥗',  name: 'Salata',          desc: 'Mevsim yeşillikleri',    src: null },
+  { emoji: '🍄',  name: 'Mantar',          desc: 'Sote mantar',            src: null },
+  { emoji: '🫘',  name: 'Humus',           desc: 'Geleneksel tarif',       src: null },
+  { emoji: '🧅',  name: 'Soğan Salatası', desc: 'Pul biberli',            src: null },
+  { emoji: '🫑',  name: 'Közlenmiş Biber',desc: 'Fırında közlenmiş',      src: null },
+  { emoji: '🌶️', name: 'Acılı Ezme',     desc: 'Ev yapımı',              src: null },
+  { emoji: '🥛',  name: 'Haydari',         desc: 'Süzme yoğurt, sarımsak',src: null },
+  { emoji: '🍋',  name: 'Limon',           desc: 'Taze dilim',             src: null },
+]
+
+const icecekler = [
+  { category: 'Gazlı İçecekler', items: [
+    { name: 'Coca Cola (Regular)', emoji: '🥤', src: null },
+    { name: 'Coca Cola Zero',      emoji: '🥤', src: null },
+    { name: 'Coca Cola Cam Şişe',  emoji: '🍶', src: null },
+    { name: 'Fanta',               emoji: '🧡', src: null },
+    { name: 'Sprite',              emoji: '💚', src: null },
+    { name: 'Beypazarı Soda',      emoji: '💧', src: null },
+  ]},
+  { category: 'Meyve Suları', items: [
+    { name: 'Fusetea Şeftali', emoji: '🍑', src: null },
+    { name: 'Fusetea Limon',   emoji: '🍋', src: null },
+    { name: 'Cappy Kayısı',    emoji: '🟠', src: null },
+    { name: 'Cappy Kiraz',     emoji: '🍒', src: null },
+    { name: 'Cappy Şeftali',   emoji: '🍑', src: null },
+  ]},
+  { category: 'Diğer', items: [
+    { name: 'Su',                   emoji: '💧', src: null },
+    { name: 'Sütaş Ayran (Açık)',   emoji: '🥛', src: null },
+    { name: 'Sütaş Ayran (Kapalı)', emoji: '🥛', src: null },
+    { name: 'Şalgam',               emoji: '🟣', src: null },
+  ]},
+]
+
+const sections = [
+  { id: 'populer',   label: '⭐ Popüler'   },
+  { id: 'izgaralar', label: '🔥 Izgaralar' },
+  { id: 'durumlar',  label: '🌯 Dürümler'  },
+  { id: 'ikramlar',  label: '🫙 İkramlar'  },
+  { id: 'icecekler', label: '🥤 İçecekler' },
+]
+
+/* ── Reusable section header ── */
+function SectionHead({ title, count }) {
+  return (
+    <div className="flex items-baseline gap-4 mb-8">
+      <h2 className="font-display text-3xl font-light text-charcoal">{title}</h2>
+      {count && (
+        <span className="font-sans text-xs text-charcoal/35 bg-gold/10 px-2.5 py-0.5 rounded-full">
+          {count} çeşit
+        </span>
+      )}
+      <div className="flex-1 h-px bg-gradient-to-r from-gold/30 to-transparent" />
+    </div>
+  )
+}
+
+/* ═══════════════════════════════════════════════════════
+   PAGE
+═══════════════════════════════════════════════════════ */
+export default function Menu() {
+  const [active, setActive] = useState('populer')
+  const refs  = useRef({})
+  const navEl = useRef(null)
+
+  const scrollTo = (id) => {
+    setActive(id)
+    const el = refs.current[id]
+    if (!el) return
+    const offset = 72 + 54
+    window.scrollTo({
+      top: el.getBoundingClientRect().top + window.scrollY - offset,
+      behavior: 'smooth',
+    })
+  }
+
+  useEffect(() => {
+    const fn = () => {
+      const offset = 72 + 54 + 40
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = refs.current[sections[i].id]
+        if (el && el.getBoundingClientRect().top <= offset) {
+          setActive(sections[i].id)
+          break
+        }
+      }
+    }
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
+  }, [])
+
+  useEffect(() => {
+    const btn = navEl.current?.querySelector('button[data-active="true"]')
+    btn?.scrollIntoView({ inline: 'nearest', behavior: 'smooth', block: 'nearest' })
+  }, [active])
 
   return (
-    <div className="menu-page">
-      {/* Page Hero */}
-      <div className="page-hero">
-        <div className="page-hero-bg" />
-        <div className="page-hero-pattern" />
-        <div className="page-hero-content">
-          <span className="section-label">Mutfağımızdan</span>
-          <h1>Şef Kebap <em>Menüsü</em></h1>
-          <p>Geleneksel lezzetler, taze malzemeler</p>
-        </div>
-      </div>
+    <div>
+      <PageHero
+        eyebrow="Mutfağımızdan"
+        title="Menümüz"
+        subtitle="Geleneksel Adana lezzetleri, taze malzeme ve özenli hazırlık."
+      />
 
-      <div className="container">
-        {/* Tabs */}
-        <div className="menu-tabs">
-          <button
-            className={`menu-tab ${activeTab === 'hepsi' ? 'active' : ''}`}
-            onClick={() => setActiveTab('hepsi')}
-          >
-            Tüm Kategoriler
-          </button>
-          {tabOrder.map(key => (
+      {/* ── Sticky Tab Nav ── */}
+      <div className="sticky top-[100px] z-40 bg-cream/95 backdrop-blur-sm border-b border-gold/20 shadow-soft">
+        <div
+          ref={navEl}
+          className="max-w-5xl mx-auto px-6 flex gap-1 overflow-x-auto py-3"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {sections.map(s => (
             <button
-              key={key}
-              className={`menu-tab ${activeTab === key ? 'active' : ''}`}
-              onClick={() => setActiveTab(key)}
+              key={s.id}
+              data-active={active === s.id}
+              onClick={() => scrollTo(s.id)}
+              className={`flex-shrink-0 px-5 py-2 rounded-full font-accent text-xs font-semibold tracking-wider transition-all duration-250 ${
+                active === s.id
+                  ? 'bg-gold text-charcoal-dark shadow-gold-sm'
+                  : 'text-charcoal/55 hover:text-gold hover:bg-gold/8'
+              }`}
             >
-              {menuData[key].icon} {menuData[key].title}
+              {s.label}
             </button>
           ))}
         </div>
+      </div>
 
-        {/* Note */}
-        <div className="menu-note">
-          <p>
-            <strong>Not:</strong> Tüm fiyatlarımıza KDV dahildir. Porsiyon büyüklükleri
-            kişiye göre değişebilir. Alerjiniz varsa lütfen garsonumuzu bilgilendirin.
-            Günlük özel menü için bizi arayın: <strong>(0322) 226 00 11</strong>
+      <div className="max-w-5xl mx-auto px-6 lg:px-10 pb-24">
+
+        {/* ══════════════════════════════
+            POPULAR — 2×3 kart
+        ══════════════════════════════ */}
+        <section ref={el => refs.current['populer'] = el} className="pt-16 pb-4">
+          <SectionHead title="Popüler Lezzetler" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
+            {popularItems.map(item => (
+              <div key={item.name} className="card-soft overflow-hidden group cursor-default">
+                {/* GÖRSEL ALANI */}
+                <FoodImage
+                  src={item.src}
+                  alt={item.name}
+                  emoji={item.emoji}
+                  aspect="aspect-[4/3]"
+                />
+                {/* İçerik */}
+                <div className="p-4">
+                  <p className="font-accent font-semibold text-sm text-charcoal mb-1">
+                    {item.name}
+                  </p>
+                  <p className="font-sans text-xs text-charcoal/45 leading-relaxed">
+                    {item.desc}
+                  </p>
+                  <div className="mt-3 pt-3 border-t border-gold/10">
+                    <span className="font-accent text-[9px] tracking-[2px] text-gold/60 uppercase">
+                      ⭐ Popüler
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ══════════════════════════════
+            IZGARALAR — 4'lü grid, kare görsel
+        ══════════════════════════════ */}
+        <section ref={el => refs.current['izgaralar'] = el} className="pt-16 pb-4">
+          <SectionHead title="Izgaralar" count={izgaralar.length} />
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {izgaralar.map((item, i) => (
+              <div key={item.name + i} className="card-soft overflow-hidden group cursor-default">
+                {/* GÖRSEL ALANI — kare */}
+                <FoodImage
+                  src={item.src}
+                  alt={item.name}
+                  emoji={item.emoji}
+                  aspect="aspect-square"
+                />
+                {/* İçerik */}
+                <div className="p-3">
+                  <p className="font-accent font-semibold text-xs text-charcoal leading-snug mb-1">
+                    {item.name}
+                  </p>
+                  {item.note && (
+                    <p className="font-sans text-[10px] text-gold/60 italic">
+                      {item.note}
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ══════════════════════════════
+            DÜRÜMLER — yatay geniş görsel
+        ══════════════════════════════ */}
+        <section ref={el => refs.current['durumlar'] = el} className="pt-16 pb-4">
+          <SectionHead title="Dürüm Çeşitleri" count={durumlar.length} />
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {durumlar.map(item => (
+              <div key={item.name} className="card-soft overflow-hidden group cursor-default">
+                {/* GÖRSEL ALANI — geniş */}
+                <FoodImage
+                  src={item.src}
+                  alt={item.name}
+                  emoji={item.emoji}
+                  aspect="aspect-[3/2]"
+                />
+                <div className="p-4">
+                  <p className="font-accent font-semibold text-xs text-charcoal mb-1">
+                    {item.name}
+                  </p>
+                  <p className="font-sans text-[11px] text-charcoal/45 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ══════════════════════════════
+            İKRAMLAR — kare kart, 4'lü grid
+        ══════════════════════════════ */}
+        <section ref={el => refs.current['ikramlar'] = el} className="pt-16 pb-4">
+          <SectionHead title="İkramlar" count={ikramlar.length} />
+          <p className="font-sans text-sm text-charcoal/40 -mt-4 mb-7 italic">
+            Siparişlerinizle birlikte servis edilir.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {ikramlar.map(item => (
+              <div key={item.name} className="card-soft overflow-hidden group cursor-default">
+                {/* GÖRSEL ALANI — kare */}
+                <FoodImage
+                  src={item.src}
+                  alt={item.name}
+                  emoji={item.emoji}
+                  aspect="aspect-square"
+                />
+                <div className="p-3 text-center">
+                  <p className="font-accent font-semibold text-xs text-charcoal mb-0.5">
+                    {item.name}
+                  </p>
+                  <p className="font-sans text-[10px] text-charcoal/40">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ══════════════════════════════
+            İÇECEKLER — küçük kart grid
+        ══════════════════════════════ */}
+        <section ref={el => refs.current['icecekler'] = el} className="pt-16 pb-4">
+          <SectionHead title="İçecekler" />
+          <div className="space-y-10">
+            {icecekler.map(group => (
+              <div key={group.category}>
+                {/* Grup başlığı */}
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="font-accent text-xs font-semibold tracking-[3px] uppercase text-gold/70">
+                    {group.category}
+                  </span>
+                  <div className="flex-1 h-px bg-gold/15" />
+                </div>
+                {/* İçecek kartları */}
+                <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
+                  {group.items.map(item => (
+                    <div key={item.name} className="card-soft overflow-hidden group cursor-default">
+                      {/* GÖRSEL ALANI — kare */}
+                      <FoodImage
+                        src={item.src}
+                        alt={item.name}
+                        emoji={item.emoji}
+                        aspect="aspect-square"
+                      />
+                      <div className="p-2.5 text-center">
+                        <p className="font-sans text-[11px] text-charcoal/70 leading-tight">
+                          {item.name}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── Not ── */}
+        <div className="mt-16 py-6 px-8 border border-gold/20 rounded-sm bg-gold/5 text-center">
+          <p className="font-sans text-sm text-charcoal/55 leading-relaxed">
+            <span className="font-semibold text-charcoal/70">📌 Not:</span>{' '}
+            Alerji durumunda lütfen servis personelimizi bilgilendiriniz.
+            Günlük özel menü için:{' '}
+            <a href="tel:+903222260011" className="text-gold hover:underline font-semibold">
+              (0322) 226 00 11
+            </a>
           </p>
         </div>
 
-        {/* All categories */}
-        {activeTab === 'hepsi' && tabOrder.map(key => {
-          const cat = menuData[key]
-          return (
-            <div className="menu-all-section" key={key}>
-              <h3>
-                <span className="cat-icon">{cat.icon}</span>
-                {cat.title}
-              </h3>
-              <p style={{ fontStyle: 'italic', color: 'var(--text-secondary)', marginBottom: 28, fontSize: 15 }}>
-                {cat.desc}
-              </p>
-              {renderItems(cat.items)}
-            </div>
-          )
-        })}
-
-        {/* Single category */}
-        {activeTab !== 'hepsi' && menuData[activeTab] && (() => {
-          const cat = menuData[activeTab]
-          return (
-            <>
-              <div className="menu-category-header">
-                <span className="menu-category-icon">{cat.icon}</span>
-                <div>
-                  <h2>{cat.title}</h2>
-                  <p>{cat.desc}</p>
-                </div>
-              </div>
-              {renderItems(cat.items)}
-            </>
-          )
-        })()}
+        {/* ── Fotoğraf ekleme rehberi (geliştirici notu) ── */}
+        {/* <details className="mt-8 border border-gold/15 rounded-sm overflow-hidden">
+          <summary className="px-5 py-4 font-accent text-xs tracking-wider text-charcoal/40 cursor-pointer hover:text-gold/70 transition-colors select-none">
+            📷 Fotoğraf nasıl eklenir? (Geliştirici notu)
+          </summary>
+          <div className="px-5 pb-5 pt-2 bg-gold/3 font-sans text-xs text-charcoal/50 leading-relaxed space-y-2 border-t border-gold/10">
+            <p><strong className="text-charcoal/70">Yöntem 1 — Public klasörü:</strong></p>
+            <code className="block bg-charcoal/5 px-3 py-2 rounded text-[11px] font-mono">
+              public/images/adana-kebap.jpg
+            </code>
+            <p>Sonra data içinde: <code className="font-mono">src: '/images/adana-kebap.jpg'</code></p>
+            <p className="pt-1"><strong className="text-charcoal/70">Yöntem 2 — Assets import:</strong></p>
+            <code className="block bg-charcoal/5 px-3 py-2 rounded text-[11px] font-mono">
+              {'import adanaImg from \'../assets/images/adana.jpg\''}
+            </code>
+            <p>Sonra data içinde: <code className="font-mono">src: adanaImg</code></p>
+          </div>
+        </details> */}
       </div>
     </div>
   )
