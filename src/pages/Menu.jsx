@@ -65,80 +65,86 @@ function FoodImage({ src, alt, aspect = 'aspect-[4/3]' }) {
 ═══════════════════════════════════════════════════════ */
 
 const popularItems = [
-  { name: 'Adana Kebap',      desc: 'İmza lezzetimiz, özel baharat karışımı', src: adanaMenuImg },
-  { name: 'Ali Nazik Kebap',  desc: 'Patlıcan püresi ve yoğurtla efsaneleşen lezzet', src: alinazikMenuImg },
-  { name: 'Ciğer Şiş',        desc: 'Özel baharatlarla marine edilmiş ciğer', src: cigerMenuImg },
-  { name: 'Tavuk Kanat',      desc: 'Odun ateşinde nar gibi kızarmış kanat', src: kanatMenuImg },
-  { name: 'Patlıcan Kebap',   desc: 'Közlenmiş patlıcanın et ile muhteşem uyumu', src: patlicanMenuImg },
-  { name: 'Tavuk Şiş',        desc: 'Özel marinasyonla hazırlanmış lokum tavuk', src: tavukSisMenuImg },
+  { name: 'Adana Kebap', desc: 'İmza lezzetimiz, özel baharat karışımı', src: adanaMenuImg },
+  { name: 'Ali Nazik Kebap', desc: 'Patlıcan püresi ve yoğurtla efsaneleşen lezzet', src: alinazikMenuImg },
+  { name: 'Ciğer Şiş', desc: 'Özel baharatlarla marine edilmiş ciğer', src: cigerMenuImg },
+  { name: 'Tavuk Kanat', desc: 'Odun ateşinde nar gibi kızarmış kanat', src: kanatMenuImg },
+  { name: 'Patlıcan Kebap', desc: 'Közlenmiş patlıcanın et ile muhteşem uyumu', src: patlicanMenuImg },
+  { name: 'Tavuk Şiş', desc: 'Özel marinasyonla hazırlanmış lokum tavuk', src: tavukSisMenuImg },
 ]
 
 const izgaralar = [
-  { name: 'Ali Nazik',             note: '1,5 porsiyon',              src: null },
-  { name: 'Külbastı',              note: '1,5 porsiyon',              src: null },
-  { name: 'Lokum Kebap',           note: '180 gr',                    src: null },
-  { name: 'Ciğer',                 note: null,                        src: cigerMenuImg },
-  { name: 'Tavuk Kelebek',         note: null,                        src: null },
-  { name: 'Tavuk Kanat',           note: null,                        src: kanatMenuImg },
-  { name: 'İkiyüzlü Adana Kebap',  note: '1,5 porsiyon',             src: null },
-  { name: 'Sıcak Ezme Üstü Kebap', note: '1,5 porsiyon',             src: null },
-  { name: 'Kuzu Kaburga',          note: null,                        src: null },
-  { name: 'Kazbaşı',               note: '1,5 porsiyon',             src: null },
-  { name: 'Kuşbaşı',               note: '1,5 porsiyon',             src: null },
-  { name: 'Patlıcan Kebap',        note: '1,5 porsiyon',             src: null },
-  { name: 'Beyti',                  note: '1,5 porsiyon',             src: null },
-  { name: 'Tavuk Şiş',             note: null,                        src: tavukSisMenuImg },
-  { name: 'Kemikli Tavuk Şiş',     note: null,                        src: null },
-  { name: 'Adana Kebap',           note: null,                        src: null },
-  { name: 'Karışık Kebap',         note: '8 porsiyon',               src: null },
+  { name: 'Ali Nazik', note: '1,5 porsiyon', src: null },
+  { name: 'Külbastı', note: '1,5 porsiyon', src: null },
+  { name: 'Lokum Kebap', note: '180 gr', src: null },
+  { name: 'Ciğer', note: null, src: cigerMenuImg },
+  { name: 'Tavuk Kelebek', note: null, src: null },
+  { name: 'Tavuk Kanat', note: null, src: kanatMenuImg },
+  { name: 'İkiyüzlü Adana Kebap', note: '1,5 porsiyon', src: null },
+  { name: 'Sıcak Ezme Üstü Kebap', note: '1,5 porsiyon', src: null },
+  { name: 'Kuzu Kaburga', note: null, src: null },
+  { name: 'Kazbaşı', note: '1,5 porsiyon', src: null },
+  { name: 'Kuşbaşı', note: '1,5 porsiyon', src: null },
+  { name: 'Patlıcan Kebap', note: '1,5 porsiyon', src: null },
+  { name: 'Beyti', note: '1,5 porsiyon', src: null },
+  { name: 'Tavuk Şiş', note: null, src: tavukSisMenuImg },
+  { name: 'Kemikli Tavuk Şiş', note: null, src: null },
+  { name: 'Adana Kebap', note: null, src: null },
+  { name: 'Karışık Kebap', note: '8 porsiyon', src: null },
 ]
 
 const durumlar = [
   { name: 'Adana Dürüm', desc: 'Adana kebap, el yapımı lavaş', src: null },
-  { name: 'Tavuk Dürüm', desc: 'Izgara tavuk, taze sebze',     src: null },
+  { name: 'Tavuk Dürüm', desc: 'Izgara tavuk, taze sebze', src: null },
 ]
 
 const ikramlar = [
-  { name: 'Salata',           desc: 'Mevsim yeşillikleri',     src: null },
-  { name: 'Soğan Salatası',   desc: 'Pul biberli',             src: null },
-  { name: 'Acılı Ezme',       desc: 'Ev yapımı',               src: null },
-  { name: 'Haydari',          desc: 'Süzme yoğurt, sarımsak',  src: null },
-  { name: 'Humus',            desc: 'Geleneksel tarif',        src: null },
-  { name: 'Patlıcan Ezmesi',  desc: 'Közlenmiş patlıcan',      src: null },
-  { name: 'Mantar Sote',      desc: 'Tereyağlı sote mantar',   src: null },
-  { name: 'Közlenmiş Biber',  desc: 'Fırında közlenmiş',       src: null },
-  { name: 'Limon',            desc: 'Taze dilim',              src: null },
+  { name: 'Salata', desc: 'Mevsim yeşillikleri', src: null },
+  { name: 'Soğan Salatası', desc: 'Pul biberli', src: null },
+  { name: 'Acılı Ezme', desc: 'Ev yapımı', src: null },
+  { name: 'Haydari', desc: 'Süzme yoğurt, sarımsak', src: null },
+  { name: 'Humus', desc: 'Geleneksel tarif', src: null },
+  { name: 'Patlıcan Ezmesi', desc: 'Közlenmiş patlıcan', src: null },
+  { name: 'Közlenmiş Mantar', desc: 'Közde pişirilmiş mantar', src: null },
+  { name: 'Közlenmiş Biber', desc: 'Fırında közlenmiş', src: null },
+  { name: 'Yeşillik Tabağı', desc: 'Taze yeşillik ve limon', src: null },
 ]
 
 const icecekler = [
-  { category: 'Gazlı İçecekler', items: [
-    { name: 'Coca-Cola',        src: null },
-    { name: 'Coca-Cola Zero',   src: null },
-    { name: 'Coca-Cola Şişe',   src: null },
-    { name: 'Fanta',            src: null },
-    { name: 'Sprite',           src: null },
-    { name: 'Beypazarı Soda',   src: null },
-  ]},
-  { category: 'Meyve Suları', items: [
-    { name: 'Fusetea Şeftali',  src: null },
-    { name: 'Fusetea Limonlu',  src: null },
-    { name: 'Cappy Kayısı',     src: null },
-    { name: 'Cappy Vişne',      src: null },
-    { name: 'Cappy Şeftali',    src: null },
-  ]},
-  { category: 'Diğer', items: [
-    { name: 'Erikli Su',            src: null },
-    { name: 'Sütaş Ayran',         src: null },
-    { name: 'Açık Ayran',          src: null },
-    { name: 'Serafresh Şalgam',    src: null },
-  ]},
+  {
+    category: 'Gazlı İçecekler', items: [
+      { name: 'Coca-Cola', src: null },
+      { name: 'Coca-Cola Zero', src: null },
+      { name: 'Coca-Cola Şişe', src: null },
+      { name: 'Fanta', src: null },
+      { name: 'Sprite', src: null },
+      { name: 'Beypazarı Soda', src: null },
+    ]
+  },
+  {
+    category: 'Meyve Suları', items: [
+      { name: 'Fusetea Şeftali', src: null },
+      { name: 'Fusetea Limonlu', src: null },
+      { name: 'Cappy Kayısı', src: null },
+      { name: 'Cappy Vişne', src: null },
+      { name: 'Cappy Şeftali', src: null },
+    ]
+  },
+  {
+    category: 'Diğer', items: [
+      { name: 'Erikli Su', src: null },
+      { name: 'Sütaş Ayran', src: null },
+      { name: 'Açık Ayran', src: null },
+      { name: 'Serafresh Şalgam', src: null },
+    ]
+  },
 ]
 
 const sections = [
-  { id: 'populer',   label: 'Popüler'   },
+  { id: 'populer', label: 'Popüler' },
   { id: 'izgaralar', label: 'Izgaralar' },
-  { id: 'durumlar',  label: 'Dürümler'  },
-  { id: 'ikramlar',  label: 'İkramlar'  },
+  { id: 'durumlar', label: 'Dürümler' },
+  { id: 'ikramlar', label: 'İkramlar' },
   { id: 'icecekler', label: 'İçecekler' },
 ]
 
@@ -162,7 +168,7 @@ function SectionHead({ title, count }) {
 ═══════════════════════════════════════════════════════ */
 export default function Menu() {
   const [active, setActive] = useState('populer')
-  const refs  = useRef({})
+  const refs = useRef({})
   const navEl = useRef(null)
 
   const scrollTo = (id) => {
@@ -216,11 +222,10 @@ export default function Menu() {
               key={s.id}
               data-active={active === s.id}
               onClick={() => scrollTo(s.id)}
-              className={`flex-shrink-0 px-5 py-2 rounded-full font-accent text-xs font-semibold tracking-wider transition-all duration-250 ${
-                active === s.id
-                  ? 'bg-gold text-charcoal-dark shadow-gold-sm'
-                  : 'text-charcoal/55 hover:text-gold hover:bg-gold/8'
-              }`}
+              className={`flex-shrink-0 px-5 py-2 rounded-full font-accent text-xs font-semibold tracking-wider transition-all duration-250 ${active === s.id
+                ? 'bg-gold text-charcoal-dark shadow-gold-sm'
+                : 'text-charcoal/55 hover:text-gold hover:bg-gold/8'
+                }`}
             >
               {s.label}
             </button>
