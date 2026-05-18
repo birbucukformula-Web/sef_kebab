@@ -62,50 +62,27 @@ export default function About() {
 
             {/* Visual */}
 
+            {/* Visual */}
             <div className="relative order-2 lg:order-1">
-
-              <div className="aspect-[4/5] bg-gradient-to-br from-gold/12 via-gold/6 to-transparent rounded-sm border border-gold/20 flex items-center justify-center">
-
-                <div className="text-center px-8">
-
-                  <p className="font-display text-2xl font-light text-charcoal/30 italic">
-
+              <div className="aspect-[4/5] rounded-[16px] overflow-hidden shadow-lg border border-[#C8511A]/20">
                 <img
-
-                src={mekan}
-
-                alt="Şef Kebap Mekan"
-
-                className="w-full h-auto rounded-sm shadow-soft" />
-
-                  </p>
-
-                </div>
-
+                  src={mekan}
+                  alt="Şef Kebap Mekan"
+                  className="w-full h-full object-cover" 
+                />
               </div>
 
               {/* Stats overlay */}
-
-              <div className="absolute -bottom-6 -right-6 bg-charcoal-dark text-cream p-6 rounded-sm shadow-2xl">
-
+              <div className="absolute -bottom-6 -right-6 bg-white text-[#1C1C1C] p-6 rounded-[12px] shadow-2xl border border-[#C8511A]/10">
                 <div className="grid grid-cols-2 gap-6">
-
                   {[['500+','Günlük Müşteri'],['4.9','Google Puan'],['40+','Menü Çeşidi'],['100%','Taze Malzeme']].map(([n,l]) => (
-
                     <div key={l} className="text-center">
-
-                      <p className="font-display text-2xl font-light text-gold">{n}</p>
-
-                      <p className="font-sans text-[10px] text-cream/40 tracking-wider uppercase mt-0.5">{l}</p>
-
+                      <p className="font-display text-2xl font-bold text-[#C8511A]">{n}</p>
+                      <p className="font-sans text-[10px] text-[#1C1C1C]/60 tracking-wider uppercase mt-1">{l}</p>
                     </div>
-
                   ))}
-
                 </div>
-
               </div>
-
             </div>
 
 
@@ -224,52 +201,96 @@ export default function About() {
 
 
 
-      {/* Team */}
-
-      <section className="section bg-cream border-t border-gold/10">
-
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-
-          <div className="text-center mb-16">
-
-            <p className="eyebrow mb-5">Ekibimiz</p>
-
-            <div className="gold-line mb-6" />
-
-            <h2 className="display-sm">Lezzetin <em className="italic text-gold">Mimarları</em></h2>
-
+      {/* ── YORUMLAR ── */}
+      <section className="section bg-cream-warm border-t border-gold/10">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <p className="eyebrow mb-4">Müşteri Görüşleri</p>
+            <div className="gold-line mb-5" />
+            <h2 className="display-sm">Sizin Görüşleriniz Bizim İçin Değerli</h2>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-            {team.map(m => (
-
-              <div key={m.name} className="card-soft overflow-hidden group">
-
-                <div className="h-40 bg-gradient-to-br from-gold/10 to-gold/5 flex items-center justify-center text-5xl border-b border-gold/10">
-
-                  {m.emoji}
-
+            {/* Yorum 1 */}
+            <div className="bg-white rounded-sm border border-gold/15 p-7 shadow-soft hover:border-gold/35 hover:shadow-gold-sm transition-all duration-300 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-[#4285F4] flex items-center justify-center flex-shrink-0">
+                  <span className="font-accent font-bold text-sm text-white">S</span>
                 </div>
-
-                <div className="p-6">
-
-                  <p className="eyebrow text-[10px] mb-2">{m.role}</p>
-
-                  <h4 className="font-display text-xl font-light text-charcoal mb-2">{m.name}</h4>
-
-                  <p className="font-sans text-xs text-charcoal/50 leading-relaxed">{m.desc}</p>
-
+                <div>
+                  <p className="font-accent font-semibold text-sm text-charcoal">Sibel Bahar</p>
+                  <p className="font-sans text-xs text-charcoal/40">4 yorum · Google</p>
                 </div>
 
               </div>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4" fill="#F59E0B" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+              <p className="font-sans text-sm text-charcoal/65 leading-relaxed flex-1">
+                "Kalabalık ailelerin, sık misafirleri olanların, lezzetli ve bol salatalı, 
+                fiyat performans açısından süper bir kebap yemek isteyenlerin kesinlikle 
+                gelmesi gereken kebapçı burası."
+              </p>
+            </div>
 
-            ))}
+            {/* Yorum 2 */}
+            <div className="bg-white rounded-sm border border-gold/15 p-7 shadow-soft hover:border-gold/35 hover:shadow-gold-sm transition-all duration-300 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full overflow-hidden flex-shrink-0 bg-orange-100 flex items-center justify-center">
+                  <span className="font-accent font-bold text-sm text-orange-500">D</span>
+                </div>
+                <div>
+                  <p className="font-accent font-semibold text-sm text-charcoal">Dilara Unsal</p>
+                  <p className="font-sans text-xs text-charcoal/40">Yerel Rehber · 35 yorum · Google</p>
+                </div>
 
+              </div>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4" fill="#F59E0B" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+              <p className="font-sans text-sm text-charcoal/65 leading-relaxed flex-1">
+                "New York'dan kalkıp Şef Kebap için yollara düştüm. Çok memnun kaldım. 
+                Yemekler müthiş lezzetli. Çalışanların hepsi çok ilgili ve güler yüzlüler. 
+                Ben 10 yıldız olsa 10 yıldız vereceğim o derece. Muhakkak gidilmesi gereken bir yer."
+              </p>
+            </div>
+
+            {/* Yorum 3 */}
+            <div className="bg-white rounded-sm border border-gold/15 p-7 shadow-soft hover:border-gold/35 hover:shadow-gold-sm transition-all duration-300 flex flex-col gap-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-teal-500 flex items-center justify-center flex-shrink-0">
+                  <span className="font-accent font-bold text-sm text-white">C</span>
+                </div>
+                <div>
+                  <p className="font-accent font-semibold text-sm text-charcoal">C Yuksel</p>
+                  <p className="font-sans text-xs text-charcoal/40">Yerel Rehber · 65 yorum · Google</p>
+                </div>
+
+              </div>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-4 h-4" fill="#F59E0B" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                  </svg>
+                ))}
+              </div>
+              <p className="font-sans text-sm text-charcoal/65 leading-relaxed flex-1">
+                "Ankara'ya giderken yemek yemek için yorumlara dayanarak geldik. İyi ki gelmişiz. 
+                Onlarca lezzetli mezeye ek olarak bir de acı biber sorduk, yok demediler. 
+                Şiddetle tavsiye edilir."
+              </p>
+            </div>
           </div>
-
         </div>
-
       </section>
 
     </div>

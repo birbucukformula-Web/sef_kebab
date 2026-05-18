@@ -33,15 +33,15 @@ const infoItems = [
 ]
 
 export default function Contact() {
-  const [form, setForm]   = useState({ name: '', email: '', message: '' })
-  const [sent, setSent]   = useState(false)
+  const [form, setForm] = useState({ name: '', email: '', message: '' })
+  const [sent, setSent] = useState(false)
 
   const handle = e => setForm(p => ({ ...p, [e.target.name]: e.target.value }))
 
   const submit = e => {
     e.preventDefault()
     const subject = encodeURIComponent('İstek ve Şikayet — Şef Kebap')
-    const body    = encodeURIComponent(`Ad Soyad: ${form.name}\nE-posta: ${form.email}\n\nMesaj:\n${form.message}`)
+    const body = encodeURIComponent(`Ad Soyad: ${form.name}\nE-posta: ${form.email}\n\nMesaj:\n${form.message}`)
     window.location.href = `mailto:sefkebap@example.com?subject=${subject}&body=${body}`
     setSent(true)
   }
@@ -190,9 +190,9 @@ export default function Contact() {
             </div>
             <div className="card-soft overflow-hidden divide-y divide-gold/10">
               {[
-                ['Pazartesi – Cuma', '11:00 – 23:00'],
-                ['Cumartesi',        '11:00 – 24:00'],
-                ['Pazar',            '12:00 – 22:00'],
+                ['Pazartesi – Cuma', '09:00 – 00:00'],
+                ['Cumartesi', '09:00 – 00:00'],
+                ['Pazar', '09:00 – 00:00'],
               ].map(([day, time]) => (
                 <div key={day} className="flex justify-between items-center px-7 py-4">
                   <span className="font-sans text-sm text-charcoal/55">{day}</span>

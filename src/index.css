@@ -5,91 +5,213 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-size: 22px;
+    font-size: 18px;
   }
 
   body {
-    @apply bg-cream text-charcoal font-sans antialiased;
-    background-color: #FAF7F2;
+    background-color: #F5F0E8;
+    color: #1C1C1C;
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1, h2, h3, h4 {
-    @apply font-display;
+    font-family: 'Playfair Display', Georgia, serif;
+    color: #1C1C1C;
   }
 
   ::selection {
-    background: rgba(212,175,55,0.25);
-    color: #2C2C2C;
+    background: rgba(200,81,26,0.2);
+    color: #1C1C1C;
   }
 
   ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: #FAF7F2; }
-  ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: #F5F0E8; }
+  ::-webkit-scrollbar-thumb { background: #C8511A; border-radius: 3px; }
 }
 
 @layer components {
-  /* Gold divider line */
+
   .gold-line {
-    @apply w-12 h-px bg-gold mx-auto;
+    width: 48px;
+    height: 2px;
+    background-color: #C8511A;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2px;
   }
 
   .gold-line-left {
-    @apply w-12 h-px bg-gold;
+    width: 48px;
+    height: 2px;
+    background-color: #C8511A;
+    border-radius: 2px;
   }
 
-  /* Section spacing */
   .section {
     @apply py-20 md:py-28;
   }
 
-  /* Eyebrow label */
   .eyebrow {
-    @apply font-accent text-xs tracking-[4px] uppercase text-gold;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #C8511A;
+    background-color: rgba(200,81,26,0.10);
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
   }
 
-  /* Display heading */
   .display-lg {
-    @apply font-display text-5xl md:text-6xl lg:text-7xl font-light text-charcoal leading-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700;
+    color: #1C1C1C;
+    line-height: 1.1;
   }
 
   .display-md {
-    @apply font-display text-4xl md:text-5xl font-light text-charcoal leading-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: #1C1C1C;
+    line-height: 1.15;
   }
 
   .display-sm {
-    @apply font-display text-3xl md:text-4xl font-light text-charcoal leading-tight;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    color: #1C1C1C;
+    line-height: 1.2;
   }
 
-  /* Buttons */
   .btn-gold {
-    @apply inline-flex items-center gap-2 bg-gold text-charcoal-dark font-accent font-semibold text-sm tracking-wider px-7 py-3.5 rounded-sm transition-all duration-300 hover:bg-gold-light hover:-translate-y-0.5 hover:shadow-gold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #C8511A;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: all 0.25s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-gold:hover {
+    background-color: #A8431A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(200,81,26,0.35);
   }
 
   .btn-outline-gold {
-    @apply inline-flex items-center gap-2 border border-gold text-gold font-accent font-semibold text-sm tracking-wider px-7 py-3.5 rounded-sm transition-all duration-300 hover:bg-gold hover:text-charcoal-dark hover:-translate-y-0.5;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: #C8511A;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 13px 28px;
+    border-radius: 50px;
+    border: 1.5px solid #C8511A;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .btn-outline-gold:hover {
+    background-color: #C8511A;
+    color: #ffffff;
+    transform: translateY(-2px);
   }
 
   .btn-outline-charcoal {
-    @apply inline-flex items-center gap-2 border border-charcoal text-charcoal font-accent font-semibold text-sm tracking-wider px-7 py-3.5 rounded-sm transition-all duration-300 hover:bg-charcoal hover:text-cream hover:-translate-y-0.5;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    color: #1C1C1C;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    padding: 13px 28px;
+    border-radius: 50px;
+    border: 1.5px solid #1C1C1C;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    text-decoration: none;
   }
 
-  /* Card */
+  .btn-outline-charcoal:hover {
+    background-color: #1C1C1C;
+    color: #F5F0E8;
+    transform: translateY(-2px);
+  }
+
   .card-soft {
-    @apply bg-cream-card rounded-sm border border-gold/10 shadow-soft transition-all duration-300 hover:shadow-soft-md hover:border-gold/25;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.06);
+    box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
   }
 
-  /* Menu item row */
+  .card-soft:hover {
+    border-color: rgba(200,81,26,0.20);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+    transform: translateY(-3px);
+  }
+
   .menu-row {
-    @apply flex items-center justify-between py-4 border-b border-charcoal/10 transition-colors duration-200 hover:bg-gold/5 px-2 -mx-2 rounded-sm cursor-default;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 8px;
+    border-bottom: 1px solid rgba(44,44,44,0.08);
+    transition: background-color 0.2s ease;
+    cursor: default;
+    border-radius: 8px;
+    margin-left: -8px;
+    margin-right: -8px;
+  }
+
+  .menu-row:hover {
+    background-color: rgba(200,81,26,0.05);
   }
 }
 
 @layer utilities {
-  .text-balance { text-wrap: balance; }
+  .text-balance {
+    text-wrap: balance;
+  }
 
-  /* Page entry animation */
   .page-enter {
     animation: fadeUp 0.5s ease both;
+  }
+
+  .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-accent {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-sans {
+    font-family: 'Inter', system-ui, sans-serif;
   }
 
   @keyframes fadeUp {

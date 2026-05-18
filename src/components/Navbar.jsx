@@ -7,7 +7,6 @@ const links = [
   { label: 'Ana Sayfa',  to: '/' },
   { label: 'Menü',       to: '/menu' },
   { label: 'Hakkımızda', to: '/hakkimizda' },
-  { label: 'Galeri',     to: '/galeri' },
   { label: 'İletişim',   to: '/iletisim' },
 ]
 
@@ -27,8 +26,8 @@ export default function Navbar() {
   }, [open])
 
   const linkClass = ({ isActive }) =>
-    `font-accent text-xs tracking-[3px] uppercase transition-colors duration-200 ${
-      isActive ? 'text-gold' : 'text-charcoal/70 hover:text-gold'
+    `font-sans text-[16px] font-medium transition-colors duration-200 ${
+      isActive ? 'text-[#C8511A]' : 'text-[#1C1C1C] hover:text-[#C8511A]'
     }`
 
   return (
@@ -36,52 +35,55 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-cream/95 backdrop-blur-md shadow-soft border-b border-gold/15'
+            ? 'bg-white shadow-soft border-b border-[#C8511A]/15'
             : 'bg-transparent'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between gap-8">
 
 {/* Logo */}
-<Link to="/" className="flex items-center group" onClick={() => setOpen(false)}>
-  <div className="relative p-1">
+<Link to="/" className="flex items-center group relative z-10" onClick={() => setOpen(false)}>
+  <div className="relative p-1 mt-4">
     {/* Arkadaki kavisli dekoratif katman (Opsiyonel, logoyu öne çıkarır) */}
-    <div className="absolute inset-0 bg-jsgold/5 rounded-[20px] rotate-6 group-hover:rotate-0 transition-transform duration-300"></div>
+    <div className="absolute inset-0 bg-[#C8511A]/5 rounded-[20px] rotate-6 group-hover:rotate-0 transition-transform duration-300"></div>
     
     <img
       src={logo}
       alt="ŞEF KEBAP"
-      className="h-12 w-auto object-contain rounded-[18px] border-2 border-jsgold/20 shadow-sm transition-all duration-300 group-hover:border-jsgold group-hover:scale-105"
+      className="h-20 lg:h-[88px] w-auto object-contain rounded-[18px] border-2 border-[#C8511A]/20 shadow-sm transition-all duration-300 group-hover:border-[#C8511A] group-hover:scale-105"
     />
     </div>  
-      <span className="ml-3 font-display text-xl tracking-tight text-charcoal hidden sm:block">
-      ŞEF <span className="text-jsgold">KEBAP</span>
+      <span className="ml-3 font-display text-[26px] text-[#C8511A] hidden sm:block">
+      Şef Kebap
   </span>
     </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-8">
-            {links.map(l => (
-              <NavLink key={l.to} to={l.to} end={l.to === '/'} className={linkClass}>
-                {l.label}
-              </NavLink>
-            ))}
-          </nav>
+          {/* Nav & Right Items Container */}
+          <div className="hidden lg:flex items-center gap-10">
+            {/* Desktop nav */}
+            <nav className="flex items-center gap-8">
+              {links.map(l => (
+                <NavLink key={l.to} to={l.to} end={l.to === '/'} className={linkClass}>
+                  {l.label}
+                </NavLink>
+              ))}
+            </nav>
 
-          {/* Desktop right */}
-          <div className="hidden lg:flex items-center gap-5">
-            <a
-              href="https://www.instagram.com/sefkebap/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-charcoal/50 hover:text-gold transition-colors duration-200"
-              aria-label="Instagram"
-            >
-              <Instagram size={17} />
-            </a>
-            <a href="tel:+903222260011" className="btn-outline-gold py-2.5 px-5 text-xs">
-              Rezervasyon
-            </a>
+            {/* Desktop right icons/buttons */}
+            <div className="flex items-center gap-5">
+              <a
+                href="https://www.instagram.com/sefkebap/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#1C1C1C]/50 hover:text-[#C8511A] transition-colors duration-200"
+                aria-label="Instagram"
+              >
+                <Instagram size={17} />
+              </a>
+              <a href="tel:+903222260011" className="btn-gold py-2.5 px-6 text-[15px] font-medium rounded-full">
+                Sipariş Ver
+              </a>
+            </div>
           </div>
 
           {/* Mobile hamburger */}
@@ -127,8 +129,8 @@ export default function Navbar() {
               end={l.to === '/'}
               onClick={() => setOpen(false)}
               className={({ isActive }) =>
-                `font-accent text-sm tracking-[2px] uppercase px-3 py-4 border-b border-charcoal/6 transition-colors duration-200 ${
-                  isActive ? 'text-gold' : 'text-charcoal/70 hover:text-gold'
+                `font-sans text-[16px] font-medium px-3 py-4 border-b border-[#1C1C1C]/10 transition-colors duration-200 ${
+                  isActive ? 'text-[#C8511A]' : 'text-[#1C1C1C] hover:text-[#C8511A]'
                 }`
               }
             >

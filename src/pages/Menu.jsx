@@ -2,6 +2,13 @@ import { useState, useRef, useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import { ImageIcon } from 'lucide-react'
 
+import adanaMenuImg from '../assets/images/menu/adana-kebap.png';
+import alinazikMenuImg from '../assets/images/menu/alinazik-kebap.png';
+import cigerMenuImg from '../assets/images/menu/ciger-sis.png';
+import kanatMenuImg from '../assets/images/menu/kanat.png';
+import patlicanMenuImg from '../assets/images/menu/patlican-kebap.png';
+import tavukSisMenuImg from '../assets/images/menu/tavuk-sis.png';
+
 /* ═══════════════════════════════════════════════════════
    FoodImage — görsel alanı
    ▸ src prop varsa gerçek fotoğrafı gösterir
@@ -12,7 +19,7 @@ import { ImageIcon } from 'lucide-react'
        import adanaImg from '../assets/images/adana.jpg'
        src={adanaImg}
 ═══════════════════════════════════════════════════════ */
-function FoodImage({ src, alt, emoji, aspect = 'aspect-[4/3]' }) {
+function FoodImage({ src, alt, aspect = 'aspect-[4/3]' }) {
   const [err, setErr] = useState(false)
 
   if (src && !err) {
@@ -42,10 +49,6 @@ function FoodImage({ src, alt, emoji, aspect = 'aspect-[4/3]' }) {
           backgroundSize: '18px 18px',
         }}
       />
-      {/* emoji */}
-      <span className="relative z-10 text-4xl transition-transform duration-300 group-hover:scale-110 select-none leading-none">
-        {emoji}
-      </span>
       {/* label */}
       <span className="relative z-10 flex items-center gap-1 font-accent text-[9px] tracking-[2px] uppercase text-gold/35">
         <ImageIcon size={9} />
@@ -62,81 +65,81 @@ function FoodImage({ src, alt, emoji, aspect = 'aspect-[4/3]' }) {
 ═══════════════════════════════════════════════════════ */
 
 const popularItems = [
-  { emoji: '🔥', name: 'Adana Kebap',    desc: 'İmza lezzetimiz, özel baharat karışımı', src: null },
-  { emoji: '🥩', name: 'Lokum Kebap',    desc: '180gr özel kesim, yumuşacık doku',        src: null },
-  { emoji: '🍆', name: 'Patlıcan Kebap', desc: 'Közlenmiş patlıcan üzeri kebap',          src: null },
-  { emoji: '🫙', name: 'Ali Nazik',      desc: 'Patlıcan püresi ve yoğurtla',             src: null },
-  { emoji: '🌯', name: 'Adana Dürüm',   desc: 'El yapımı lavaşta Adana kebap',            src: null },
-  { emoji: '🍗', name: 'Tavuk Kelebek', desc: 'Kelebek kesim tavuk, ızgara',              src: null },
+  { name: 'Adana Kebap',      desc: 'İmza lezzetimiz, özel baharat karışımı', src: adanaMenuImg },
+  { name: 'Ali Nazik Kebap',  desc: 'Patlıcan püresi ve yoğurtla efsaneleşen lezzet', src: alinazikMenuImg },
+  { name: 'Ciğer Şiş',        desc: 'Özel baharatlarla marine edilmiş ciğer', src: cigerMenuImg },
+  { name: 'Tavuk Kanat',      desc: 'Odun ateşinde nar gibi kızarmış kanat', src: kanatMenuImg },
+  { name: 'Patlıcan Kebap',   desc: 'Közlenmiş patlıcanın et ile muhteşem uyumu', src: patlicanMenuImg },
+  { name: 'Tavuk Şiş',        desc: 'Özel marinasyonla hazırlanmış lokum tavuk', src: tavukSisMenuImg },
 ]
 
 const izgaralar = [
-  { name: 'Lokum Kebap',           emoji: '🥩', note: '180gr',                     src: null },
-  { name: 'Ciğer',                 emoji: '🫀', note: null,                         src: null },
-  { name: 'Ali Nazik',             emoji: '🫙', note: '1,5 porsiyon seçeneği',     src: null },
-  { name: 'Külbastı',              emoji: '🥩', note: '1,5 porsiyon seçeneği',     src: null },
-  { name: 'Tavuk Kelebek',         emoji: '🍗', note: null,                         src: null },
-  { name: 'Tavuk Kanat',           emoji: '🍗', note: null,                         src: null },
-  { name: 'Kuzu Kaburga',          emoji: '🍖', note: null,                         src: null },
-  { name: 'Kuşbaşı',               emoji: '🥩', note: '1,5 porsiyon seçeneği',     src: null },
-  { name: 'İkiyüzlü Adana Kebap',  emoji: '🔥', note: '1,5 porsiyon seçeneği',     src: null },
-  { name: 'Sıcak Ezme Üstü Kebap', emoji: '🌶️', note: '1,5 porsiyon seçeneği',    src: null },
-  { name: 'Patlıcan Kebap',        emoji: '🍆', note: '1,5 porsiyon seçeneği',     src: null },
-  { name: 'Beyti',                  emoji: '🌯', note: '1,5 porsiyon seçeneği',     src: null },
-  { name: 'Tavuk Şiş',             emoji: '🍢', note: null,                         src: null },
-  { name: 'Kemikli Tavuk Şiş',     emoji: '🍗', note: null,                         src: null },
-  { name: 'Adana Kebap',           emoji: '🔥', note: null,                         src: null },
-  { name: 'Karışık Kebap',         emoji: '🍽️', note: '8 porsiyon tepsi',          src: null },
+  { name: 'Lokum Kebap',           note: '180gr',                     src: null },
+  { name: 'Ciğer',                 note: null,                         src: cigerMenuImg },
+  { name: 'Ali Nazik',             note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Külbastı',              note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Tavuk Kelebek',         note: null,                         src: null },
+  { name: 'Tavuk Kanat',           note: null,                         src: kanatMenuImg },
+  { name: 'Kuzu Kaburga',          note: null,                         src: null },
+  { name: 'Kuşbaşı',               note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'İkiyüzlü Adana Kebap',  note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Sıcak Ezme Üstü Kebap', note: '1,5 porsiyon seçeneği',    src: null },
+  { name: 'Patlıcan Kebap',        note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Beyti',                  note: '1,5 porsiyon seçeneği',     src: null },
+  { name: 'Tavuk Şiş',             note: null,                         src: tavukSisMenuImg },
+  { name: 'Kemikli Tavuk Şiş',     note: null,                         src: null },
+  { name: 'Adana Kebap',           note: null,                         src: null },
+  { name: 'Karışık Kebap',         note: '8 porsiyon tepsi',          src: null },
 ]
 
 const durumlar = [
-  { emoji: '🌯', name: 'Adana Dürüm',   desc: 'Adana kebap, el yapımı lavaş',  src: null },
-  { emoji: '🌯', name: 'Urfa Dürüm',    desc: 'Urfa kebap, ince lavaş',         src: null },
-  { emoji: '🌯', name: 'Tavuk Dürüm',   desc: 'Izgara tavuk, taze sebze',       src: null },
-  { emoji: '🌯', name: 'Karışık Dürüm', desc: 'Et + tavuk karışık',             src: null },
+  { name: 'Adana Dürüm',   desc: 'Adana kebap, el yapımı lavaş',  src: null },
+  { name: 'Urfa Dürüm',    desc: 'Urfa kebap, ince lavaş',         src: null },
+  { name: 'Tavuk Dürüm',   desc: 'Izgara tavuk, taze sebze',       src: null },
+  { name: 'Karışık Dürüm', desc: 'Et + tavuk karışık',             src: null },
 ]
 
 const ikramlar = [
-  { emoji: '🥗',  name: 'Salata',          desc: 'Mevsim yeşillikleri',    src: null },
-  { emoji: '🍄',  name: 'Mantar',          desc: 'Sote mantar',            src: null },
-  { emoji: '🫘',  name: 'Humus',           desc: 'Geleneksel tarif',       src: null },
-  { emoji: '🧅',  name: 'Soğan Salatası', desc: 'Pul biberli',            src: null },
-  { emoji: '🫑',  name: 'Közlenmiş Biber',desc: 'Fırında közlenmiş',      src: null },
-  { emoji: '🌶️', name: 'Acılı Ezme',     desc: 'Ev yapımı',              src: null },
-  { emoji: '🥛',  name: 'Haydari',         desc: 'Süzme yoğurt, sarımsak',src: null },
-  { emoji: '🍋',  name: 'Limon',           desc: 'Taze dilim',             src: null },
+  { name: 'Salata',          desc: 'Mevsim yeşillikleri',    src: null },
+  { name: 'Mantar',          desc: 'Sote mantar',            src: null },
+  { name: 'Humus',           desc: 'Geleneksel tarif',       src: null },
+  { name: 'Soğan Salatası', desc: 'Pul biberli',            src: null },
+  { name: 'Közlenmiş Biber',desc: 'Fırında közlenmiş',      src: null },
+  { name: 'Acılı Ezme',     desc: 'Ev yapımı',              src: null },
+  { name: 'Haydari',         desc: 'Süzme yoğurt, sarımsak',src: null },
+  { name: 'Limon',           desc: 'Taze dilim',             src: null },
 ]
 
 const icecekler = [
   { category: 'Gazlı İçecekler', items: [
-    { name: 'Coca Cola (Regular)', emoji: '🥤', src: null },
-    { name: 'Coca Cola Zero',      emoji: '🥤', src: null },
-    { name: 'Coca Cola Cam Şişe',  emoji: '🍶', src: null },
-    { name: 'Fanta',               emoji: '🧡', src: null },
-    { name: 'Sprite',              emoji: '💚', src: null },
-    { name: 'Beypazarı Soda',      emoji: '💧', src: null },
+    { name: 'Coca Cola (Regular)', src: null },
+    { name: 'Coca Cola Zero',      src: null },
+    { name: 'Coca Cola Cam Şişe',  src: null },
+    { name: 'Fanta',               src: null },
+    { name: 'Sprite',              src: null },
+    { name: 'Beypazarı Soda',      src: null },
   ]},
   { category: 'Meyve Suları', items: [
-    { name: 'Fusetea Şeftali', emoji: '🍑', src: null },
-    { name: 'Fusetea Limon',   emoji: '🍋', src: null },
-    { name: 'Cappy Kayısı',    emoji: '🟠', src: null },
-    { name: 'Cappy Kiraz',     emoji: '🍒', src: null },
-    { name: 'Cappy Şeftali',   emoji: '🍑', src: null },
+    { name: 'Fusetea Şeftali', src: null },
+    { name: 'Fusetea Limon',   src: null },
+    { name: 'Cappy Kayısı',    src: null },
+    { name: 'Cappy Kiraz',     src: null },
+    { name: 'Cappy Şeftali',   src: null },
   ]},
   { category: 'Diğer', items: [
-    { name: 'Su',                   emoji: '💧', src: null },
-    { name: 'Sütaş Ayran (Açık)',   emoji: '🥛', src: null },
-    { name: 'Sütaş Ayran (Kapalı)', emoji: '🥛', src: null },
-    { name: 'Şalgam',               emoji: '🟣', src: null },
+    { name: 'Su',                   src: null },
+    { name: 'Sütaş Ayran (Açık)',   src: null },
+    { name: 'Sütaş Ayran (Kapalı)', src: null },
+    { name: 'Şalgam',               src: null },
   ]},
 ]
 
 const sections = [
-  { id: 'populer',   label: '⭐ Popüler'   },
-  { id: 'izgaralar', label: '🔥 Izgaralar' },
-  { id: 'durumlar',  label: '🌯 Dürümler'  },
-  { id: 'ikramlar',  label: '🫙 İkramlar'  },
-  { id: 'icecekler', label: '🥤 İçecekler' },
+  { id: 'populer',   label: 'Popüler'   },
+  { id: 'izgaralar', label: 'Izgaralar' },
+  { id: 'durumlar',  label: 'Dürümler'  },
+  { id: 'ikramlar',  label: 'İkramlar'  },
+  { id: 'icecekler', label: 'İçecekler' },
 ]
 
 /* ── Reusable section header ── */
@@ -239,7 +242,6 @@ export default function Menu() {
                 <FoodImage
                   src={item.src}
                   alt={item.name}
-                  emoji={item.emoji}
                   aspect="aspect-[4/3]"
                 />
                 {/* İçerik */}
@@ -252,7 +254,7 @@ export default function Menu() {
                   </p>
                   <div className="mt-3 pt-3 border-t border-gold/10">
                     <span className="font-accent text-[9px] tracking-[2px] text-gold/60 uppercase">
-                      ⭐ Popüler
+                      Popüler
                     </span>
                   </div>
                 </div>
@@ -268,21 +270,13 @@ export default function Menu() {
           <SectionHead title="Izgaralar" count={izgaralar.length} />
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {izgaralar.map((item, i) => (
-              <div key={item.name + i} className="card-soft overflow-hidden group cursor-default">
-                {/* GÖRSEL ALANI — kare */}
-                <FoodImage
-                  src={item.src}
-                  alt={item.name}
-                  emoji={item.emoji}
-                  aspect="aspect-square"
-                />
-                {/* İçerik */}
-                <div className="p-3">
-                  <p className="font-accent font-semibold text-xs text-charcoal leading-snug mb-1">
+              <div key={item.name + i} className="card-soft overflow-hidden group cursor-default flex items-center p-4">
+                <div>
+                  <p className="font-accent font-semibold text-[15px] text-charcoal leading-snug mb-0.5">
                     {item.name}
                   </p>
                   {item.note && (
-                    <p className="font-sans text-[10px] text-gold/60 italic">
+                    <p className="font-sans text-[11px] text-gold/80 italic">
                       {item.note}
                     </p>
                   )}
@@ -299,19 +293,12 @@ export default function Menu() {
           <SectionHead title="Dürüm Çeşitleri" count={durumlar.length} />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {durumlar.map(item => (
-              <div key={item.name} className="card-soft overflow-hidden group cursor-default">
-                {/* GÖRSEL ALANI — geniş */}
-                <FoodImage
-                  src={item.src}
-                  alt={item.name}
-                  emoji={item.emoji}
-                  aspect="aspect-[3/2]"
-                />
-                <div className="p-4">
-                  <p className="font-accent font-semibold text-xs text-charcoal mb-1">
+              <div key={item.name} className="card-soft overflow-hidden group cursor-default flex items-center p-4">
+                <div>
+                  <p className="font-accent font-semibold text-[15px] text-charcoal mb-0.5">
                     {item.name}
                   </p>
-                  <p className="font-sans text-[11px] text-charcoal/45 leading-relaxed">
+                  <p className="font-sans text-[11px] text-charcoal/50 leading-relaxed">
                     {item.desc}
                   </p>
                 </div>
@@ -330,19 +317,12 @@ export default function Menu() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             {ikramlar.map(item => (
-              <div key={item.name} className="card-soft overflow-hidden group cursor-default">
-                {/* GÖRSEL ALANI — kare */}
-                <FoodImage
-                  src={item.src}
-                  alt={item.name}
-                  emoji={item.emoji}
-                  aspect="aspect-square"
-                />
-                <div className="p-3 text-center">
-                  <p className="font-accent font-semibold text-xs text-charcoal mb-0.5">
+              <div key={item.name} className="card-soft overflow-hidden group cursor-default flex items-center p-4">
+                <div>
+                  <p className="font-accent font-semibold text-[14px] text-charcoal mb-0.5">
                     {item.name}
                   </p>
-                  <p className="font-sans text-[10px] text-charcoal/40">
+                  <p className="font-sans text-[11px] text-charcoal/50">
                     {item.desc}
                   </p>
                 </div>
@@ -369,19 +349,10 @@ export default function Menu() {
                 {/* İçecek kartları */}
                 <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3">
                   {group.items.map(item => (
-                    <div key={item.name} className="card-soft overflow-hidden group cursor-default">
-                      {/* GÖRSEL ALANI — kare */}
-                      <FoodImage
-                        src={item.src}
-                        alt={item.name}
-                        emoji={item.emoji}
-                        aspect="aspect-square"
-                      />
-                      <div className="p-2.5 text-center">
-                        <p className="font-sans text-[11px] text-charcoal/70 leading-tight">
-                          {item.name}
-                        </p>
-                      </div>
+                    <div key={item.name} className="card-soft overflow-hidden group cursor-default flex items-center p-3">
+                      <p className="font-sans text-[12px] font-medium text-charcoal/80 leading-tight">
+                        {item.name}
+                      </p>
                     </div>
                   ))}
                 </div>
