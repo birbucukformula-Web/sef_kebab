@@ -219,7 +219,7 @@ export default function About() {
                   <span className="font-accent font-bold text-sm text-white">S</span>
                 </div>
                 <div>
-                  <p className="font-accent font-semibold text-sm text-charcoal">Sibel Bahar</p>
+                  <p className="font-accent font-semibold text-sm text-charcoal">S. B.</p>
                   <p className="font-sans text-xs text-charcoal/40">4 yorum · Google</p>
                 </div>
 
@@ -245,7 +245,7 @@ export default function About() {
                   <span className="font-accent font-bold text-sm text-orange-500">D</span>
                 </div>
                 <div>
-                  <p className="font-accent font-semibold text-sm text-charcoal">Dilara Unsal</p>
+                  <p className="font-accent font-semibold text-sm text-charcoal">D. U.</p>
                   <p className="font-sans text-xs text-charcoal/40">Yerel Rehber · 35 yorum · Google</p>
                 </div>
 
@@ -271,7 +271,7 @@ export default function About() {
                   <span className="font-accent font-bold text-sm text-white">C</span>
                 </div>
                 <div>
-                  <p className="font-accent font-semibold text-sm text-charcoal">C Yuksel</p>
+                  <p className="font-accent font-semibold text-sm text-charcoal">C. Y.</p>
                   <p className="font-sans text-xs text-charcoal/40">Yerel Rehber · 65 yorum · Google</p>
                 </div>
 
