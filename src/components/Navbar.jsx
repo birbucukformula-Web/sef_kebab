@@ -80,8 +80,9 @@ export default function Navbar() {
               >
                 <Instagram size={17} />
               </a>
-              <a href="tel:+903222260011" className="btn-gold py-2.5 px-6 text-[15px] font-medium rounded-full">
-                Sipariş Ver
+              <a href="tel:+903222260011" className="btn-gold py-2.5 px-6 text-[15px] font-medium rounded-full flex items-center gap-2">
+                <Phone size={15} />
+                (0322) 226 00 11
               </a>
             </div>
           </div>
