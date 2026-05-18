@@ -118,7 +118,7 @@ const icecekler = [
       { name: 'Coca-Cola Şişe', src: null },
       { name: 'Fanta', src: null },
       { name: 'Sprite', src: null },
-      { name: 'Beypazarı Soda', src: null },
+      { name: 'Soda', src: null },
     ]
   },
   {
@@ -132,10 +132,10 @@ const icecekler = [
   },
   {
     category: 'Diğer', items: [
-      { name: 'Erikli Su', src: null },
-      { name: 'Sütaş Ayran', src: null },
+      { name: 'Su', src: null },
+      { name: 'Kapalı Ayran', src: null },
       { name: 'Açık Ayran', src: null },
-      { name: 'Serafresh Şalgam', src: null },
+      { name: 'Şalgam', src: null },
     ]
   },
 ]
