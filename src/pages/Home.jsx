@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Star, Users, Flame, Leaf, ChevronRight } from 'lucide-react'
-import mekanImg from '../assets/images/mekan.jpg';
-import playgroundImg from '../assets/images/playground.jpg';
+import playgroundImg from '../assets/images/playground.webp';
 import kebapImg from '../assets/images/insta_gorsel/insta_kebap.jpg';
 import kebapImg2 from '../assets/images/insta_gorsel/insta_kebap2.jpg';
 import lokumImg from '../assets/images/insta_gorsel/insta_lokumkebap.jpg';
