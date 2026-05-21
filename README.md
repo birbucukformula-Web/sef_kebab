@@ -16,10 +16,6 @@ npm run dev
 # 3. Production build
 npm run build
 
-# 4. ZIP oluştur
-npm install --save-dev archiver   # ilk seferinde
-node zip-project.cjs
-```
 
 ---
 
