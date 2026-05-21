@@ -2,12 +2,12 @@ import { useState, useRef, useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import { ImageIcon } from 'lucide-react'
 
-import adanaMenuImg from '../assets/images/menu/adana-kebap.png';
-import alinazikMenuImg from '../assets/images/menu/alinazik-kebap.png';
-import cigerMenuImg from '../assets/images/menu/ciger-sis.png';
-import kanatMenuImg from '../assets/images/menu/kanat.png';
-import patlicanMenuImg from '../assets/images/menu/patlican-kebap.png';
-import tavukSisMenuImg from '../assets/images/menu/tavuk-sis.png';
+import adanaMenuImg from '../assets/images/menu/adana-kebap.webp';
+import alinazikMenuImg from '../assets/images/menu/alinazik-kebap.webp';
+import cigerMenuImg from '../assets/images/menu/ciger-sis.webp';
+import kanatMenuImg from '../assets/images/menu/kanat.webp';
+import patlicanMenuImg from '../assets/images/menu/patlican-kebap.webp';
+import tavukSisMenuImg from '../assets/images/menu/tavuk-sis.webp';
 
 /* ═══════════════════════════════════════════════════════
    FoodImage — görsel alanı

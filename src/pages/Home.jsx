@@ -11,8 +11,7 @@ import kusbasiImg from '../assets/images/insta_gorsel/insta_kusbasi.jpg';
 import patlicanImg from '../assets/images/insta_gorsel/insta_patlicankebabi.jpg';
 
 
-import girisGorselImg from '../assets/images/giris_gorsel.png';
-
+import girisGorselImg from '../assets/images/giris_gorsel.webp';
 
 
 export default function Home() {
