@@ -8,7 +8,7 @@ import lokumImg from '../assets/images/insta_gorsel/insta_lokumkebap.jpg';
 import lokum2Img from '../assets/images/insta_gorsel/insta_lokum2.jpg';
 import kusbasiImg from '../assets/images/insta_gorsel/insta_kusbasi.jpg';
 import patlicanImg from '../assets/images/insta_gorsel/insta_patlicankebabi.jpg';
-
+import mekanImg from '../assets/images/mekan.webp';
 
 import girisGorselImg from '../assets/images/giris_gorsel.webp';
 
@@ -55,8 +55,7 @@ export default function Home() {
             </h1>
 
             <p className="font-sans text-charcoal/55 text-base leading-relaxed mb-10 max-w-md">
-              Kömür ateşinin dumanı, özel baharat karışımı ve samimi Adana
-              misafirperverliği. Her tabak bir ustalık hikayesi.
+               Yıllarca aynı ateş, aynı eller, aynı lezzet. Çünkü gerçek tarif değişmez.
             </p>
 
             <div className="flex flex-wrap gap-4">
@@ -114,7 +113,7 @@ src={playgroundImg}
                 <em className="italic text-gold">Aileler Keyif Yapar</em>
               </h2>
               <p className="font-sans text-charcoal/55 leading-relaxed mb-6">
-                Özel tasarlanmış playground alanımızda çocuklar güvenle oynarken
+                Özel tasarlanmış oyun alanımızda çocuklar güvenle oynarken
                 siz de masanızda Adana'nın en lezzetli kebaplarının tadını çıkarın.
               </p>
               <p className="font-sans text-charcoal/55 leading-relaxed mb-8">

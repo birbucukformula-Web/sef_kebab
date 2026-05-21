@@ -8,6 +8,8 @@ import cigerMenuImg from '../assets/images/menu/ciger-sis.webp';
 import kanatMenuImg from '../assets/images/menu/kanat.webp';
 import patlicanMenuImg from '../assets/images/menu/patlican-kebap.webp';
 import tavukSisMenuImg from '../assets/images/menu/tavuk-sis.webp';
+import adanaDurumImg from '../assets/images/menu/adana-durum.webp';
+import tavukSisDurumImg from '../assets/images/menu/tavuk-sis-durum.webp';
 
 /* ═══════════════════════════════════════════════════════
    FoodImage — görsel alanı
@@ -71,6 +73,8 @@ const popularItems = [
   { name: 'Tavuk Kanat', desc: 'Odun ateşinde nar gibi kızarmış kanat', src: kanatMenuImg },
   { name: 'Patlıcan Kebap', desc: 'Közlenmiş patlıcanın et ile muhteşem uyumu', src: patlicanMenuImg },
   { name: 'Tavuk Şiş', desc: 'Özel marinasyonla hazırlanmış lokum tavuk', src: tavukSisMenuImg },
+  { name: 'Adana Dürüm', desc: 'Adana kebap, el yapımı lavaş', src: adanaDurumImg },
+  { name: 'Tavuk Şiş Dürüm', desc: 'Izgara tavuk, taze sebze', src: tavukSisDurumImg },
 ]
 
 const izgaralar = [
@@ -94,8 +98,8 @@ const izgaralar = [
 ]
 
 const durumlar = [
-  { name: 'Adana Dürüm', desc: 'Adana kebap, el yapımı lavaş', src: null },
-  { name: 'Tavuk Dürüm', desc: 'Izgara tavuk, taze sebze', src: null },
+  { name: 'Adana Dürüm', desc: 'Adana kebap, el yapımı lavaş', src: adanaDurumImg },
+  { name: 'Tavuk Şiş Dürüm', desc: 'Izgara tavuk, taze sebze', src: tavukSisDurumImg },
 ]
 
 const ikramlar = [

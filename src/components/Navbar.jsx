@@ -100,14 +100,14 @@ export default function Navbar() {
       {/* Mobile overlay */}
       {open && (
         <div
-          className="fixed inset-0 bg-black/40 z-40 lg:hidden"
+          className="fixed inset-0 bg-black/40 z-50 lg:hidden"
           onClick={() => setOpen(false)}
         />
       )}
 
       {/* Mobile panel */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-72 bg-cream z-40 flex flex-col transition-transform duration-400 ease-in-out lg:hidden shadow-2xl ${
+        className={`fixed top-0 right-0 bottom-0 w-72 bg-cream z-50 flex flex-col transition-transform duration-400 ease-in-out lg:hidden shadow-2xl ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
         style={{ transitionDuration: '350ms' }}

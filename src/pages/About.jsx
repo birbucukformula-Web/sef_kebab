@@ -46,7 +46,7 @@ export default function About() {
 
         title="Şef Kebap Hikâyesi"
 
-        subtitle="Adana'nın kalbinde, geleneksel lezzetleri modern bir dokunuşla sunan özgün bir kebap durağı."
+        subtitle="Adana'nın kalbinde, ocağından sofraya uzanan gerçek bir kebap durağı."
 
       />
 
@@ -105,29 +105,13 @@ export default function About() {
 
                 <p>
 
-                  Şef Kebap, Seyhan'ın Yenibaraj Mahallesinde kurulmuş, taze malzeme
-
-                  ve geleneksel pişirme yöntemiyle Adana kebabının gerçek lezzetini
-
-                  sunan bir kebap evidir.
+                8 yıldır Adana Seyhan'da, taze malzeme ve geleneksel pişirme yöntemiyle Adana kebabının gerçek lezzetini sunuyoruz. Kömür ateşinin dumanı ve özel baharat karışımıyla her tabak bir ustalık hikayesine dönüşüyor.
 
                 </p>
 
                 <p>
 
-                  Kömür ateşinin dumanı, özel baharat karışımı ve samimi Adana
-
-                  misafirperverliğini bir araya getirerek her tabağı bir deneyime
-
-                  dönüştürüyoruz.
-
-                </p>
-
-                <p>
-
-                  Kapımızdan giren herkes bize misafir değil, aile gibi değerlidir.
-
-                  Özel oyun alanımızla çocuklar güvende, aileler keyifle vakit geçirir.
+                Kapımızdan giren herkes bize misafir değil, aile gibi değerlidir. Özel oyun alanımızla çocuklar güvende, aileler masada keyifle vakit geçirir.
 
                 </p>
 

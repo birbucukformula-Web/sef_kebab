@@ -16,7 +16,7 @@ export default function Contact() {
           <div className="grid lg:grid-cols-2 gap-14 items-stretch">
 
             {/* Sol: Bilgiler + Çalışma Saatleri */}
-            <div className="flex flex-col">
+            <div className="flex flex-col h-full rounded-[24px] bg-cream-warm border border-gold/20 p-8 shadow-soft">
 
               {/* İletişim Bilgileri */}
               <div className="flex flex-col flex-1">
@@ -58,20 +58,6 @@ export default function Contact() {
                     </div>
                   </a>
 
-                  {/* Mail */}
-                  <a
-                    href="mailto:info@sefkebap.com.tr"
-                    className="group flex items-start gap-4 card-soft p-6 hover:border-gold/35 transition-all duration-300"
-                  >
-                    <div className="w-11 h-11 rounded-full border border-gold/25 flex items-center justify-center flex-shrink-0 group-hover:border-gold/60 transition-colors">
-                      <Mail size={17} className="text-gold/55 group-hover:text-gold transition-colors" />
-                    </div>
-                    <div>
-                      <p className="eyebrow text-[10px] mb-1 text-gold/70">E-posta</p>
-                      <p className="font-sans text-sm text-charcoal/70">info@sefkebap.com.tr</p>
-                    </div>
-                  </a>
-
                   {/* Çalışma Saatleri */}
                   <div className="group flex items-start gap-4 card-soft p-6">
                     <div className="w-11 h-11 rounded-full border border-gold/25 flex items-center justify-center flex-shrink-0">
@@ -92,7 +78,7 @@ export default function Contact() {
             </div>
 
             {/* Sağ: Harita */}
-            <div className="rounded-sm overflow-hidden border border-gold/20 shadow-soft flex flex-col">
+            <div className="rounded-sm overflow-hidden border border-gold/20 shadow-soft flex flex-col h-full">
               <iframe
                 title="Şef Kebap Konumu"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.4885366023686!2d35.315734500000005!3d37.0219964!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f687ba89127%3A0xe272428027d0ecfd!2s%C5%9Eef%20Kebap!5e0!3m2!1str!2str!4v1779125803082!5m2!1str!2str"

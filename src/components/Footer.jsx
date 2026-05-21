@@ -108,33 +108,35 @@ export default function Footer() {
       </div>
 
       {/* Team logo section */}
-      <div className="bg-[#F5F0E8] text-center py-6 px-6">
-        <p className="eyebrow text-[#C8511A]/40 mb-3">Presented by</p>
-
-        {/* Large team logo area */}
-        <a 
-          href="https://birbucukadanaformula.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex flex-col items-center gap-2 group cursor-pointer"
-        >
-          <div className="w-10 h-10 rounded-full border border-[#C8511A]/30 flex items-center justify-center group-hover:border-[#C8511A]/60 transition-colors duration-300">
-            <span className="font-display text-lg text-[#C8511A]/60 group-hover:text-[#C8511A] transition-colors duration-300">1.5</span>
+      <div className="bg-[#F5F0E8] py-8 px-6">
+        <div className="max-w-3xl mx-auto flex flex-col items-center gap-6">
+          <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-8">
+            <p className="eyebrow text-[#C8511A]/60 mb-0">Presented by</p>
+            <a
+              href="https://birbucukadanaformula.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 group cursor-pointer"
+            >
+              <div className="w-10 h-10 rounded-full border border-[#C8511A]/30 flex items-center justify-center group-hover:border-[#C8511A]/60 transition-colors duration-300">
+                <span className="font-display text-lg text-[#C8511A]/60 group-hover:text-[#C8511A] transition-colors duration-300">1.5</span>
+              </div>
+              <div className="text-left">
+                <p className="font-display text-sm tracking-[4px] text-[#1C1C1C]/60 group-hover:text-[#1C1C1C]/80 transition-colors duration-300">
+                  1.5 ADANA FORMULA
+                </p>
+                <p className="font-accent text-[8px] tracking-[4px] uppercase text-[#C8511A]/40 mt-1">
+                  Digital · Design · Development
+                </p>
+              </div>
+            </a>
           </div>
-          <div>
-            <p className="font-display text-sm tracking-[4px] text-[#1C1C1C]/60 group-hover:text-[#1C1C1C]/80 transition-colors duration-300">
-              1.5 ADANA FORMULA
-            </p>
-            <p className="font-accent text-[8px] tracking-[4px] uppercase text-[#C8511A]/40 mt-1">
-              Digital · Design · Development
+
+          <div className="w-full border-t border-[#1C1C1C]/10 pt-4">
+            <p className="font-sans text-[10px] text-[#1C1C1C]/60 tracking-wide text-center">
+              © {new Date().getFullYear()} Şef Kebap. Tüm hakları saklıdır.
             </p>
           </div>
-        </a>
-
-        <div className="mt-8 pt-4 border-t border-[#1C1C1C]/10">
-          <p className="font-sans text-[10px] text-[#1C1C1C]/60 tracking-wide">
-            © {new Date().getFullYear()} Şef Kebap. Tüm hakları saklıdır.
-          </p>
         </div>
       </div>
     </footer>
