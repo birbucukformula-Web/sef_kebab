@@ -1,4 +1,4 @@
-# Şef Kebap — V4 (Airy Elegant)
+# Şef Kebap —  (Airy Elegant)
 
 React (Vite) + Tailwind CSS + lucide-react
 
