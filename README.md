@@ -22,7 +22,7 @@ npm run build
 ## 📁 Yapı
 
 ```
-sef-kebap-v4/
+sef-kebab/
 ├── index.html
 ├── package.json
 ├── vite.config.js
