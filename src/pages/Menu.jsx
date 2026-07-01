@@ -75,6 +75,7 @@ const popularItems = [
   { name: 'Tavuk Şiş', desc: 'Özel marinasyonla hazırlanmış lokum tavuk', src: tavukSisMenuImg },
   { name: 'Adana Dürüm', desc: 'Adana kebap, el yapımı lavaş', src: adanaDurumImg },
   { name: 'Tavuk Şiş Dürüm', desc: 'Izgara tavuk, taze sebze', src: tavukSisDurumImg },
+  { name: 'Kuşbaşı', desc: 'Özel marine edilmiş lokum kıvamında kuzu eti', src: null },
 ]
 
 const izgaralar = [
