@@ -2,14 +2,14 @@ import { useState, useRef, useEffect } from 'react'
 import PageHero from '../components/PageHero'
 import { ImageIcon } from 'lucide-react'
 
-import adanaMenuImg from '../assets/images/menu/adana-kebap.webp';
-import alinazikMenuImg from '../assets/images/menu/alinazik-kebap.webp';
-import cigerMenuImg from '../assets/images/menu/ciger-sis.webp';
-import kanatMenuImg from '../assets/images/menu/kanat.webp';
-import patlicanMenuImg from '../assets/images/menu/patlican-kebap.webp';
-import tavukSisMenuImg from '../assets/images/menu/tavuk-sis.webp';
+import adanaMenuImg from '../assets/images/menu/kebap.webp';
+import alinazikMenuImg from '../assets/images/menu/alinazik.webp';
+import cigerMenuImg from '../assets/images/menu/kuzu-ciger-sis-1.webp';
+import kanatMenuImg from '../assets/images/menu/citir-kanat-1.webp';
+import tavukSisMenuImg from '../assets/images/menu/tavuk-sis-1.webp';
 import adanaDurumImg from '../assets/images/menu/adana-durum.webp';
 import tavukSisDurumImg from '../assets/images/menu/tavuk-sis-durum.webp';
+import kusbasiMenuImg from '../assets/images/menu/kusbasi.webp';
 
 /* ═══════════════════════════════════════════════════════
    FoodImage — görsel alanı
@@ -71,15 +71,15 @@ const popularItems = [
   { name: 'Ali Nazik Kebap', desc: 'Patlıcan püresi ve yoğurtla efsaneleşen lezzet', src: alinazikMenuImg },
   { name: 'Ciğer Şiş', desc: 'Özel baharatlarla marine edilmiş ciğer', src: cigerMenuImg },
   { name: 'Tavuk Kanat', desc: 'Odun ateşinde nar gibi kızarmış kanat', src: kanatMenuImg },
-  { name: 'Patlıcan Kebap', desc: 'Közlenmiş patlıcanın et ile muhteşem uyumu', src: patlicanMenuImg },
+  { name: 'Patlıcan Kebap', desc: 'Közlenmiş patlıcanın et ile muhteşem uyumu', src: null },
   { name: 'Tavuk Şiş', desc: 'Özel marinasyonla hazırlanmış lokum tavuk', src: tavukSisMenuImg },
   { name: 'Adana Dürüm', desc: 'Adana kebap, el yapımı lavaş', src: adanaDurumImg },
   { name: 'Tavuk Şiş Dürüm', desc: 'Izgara tavuk, taze sebze', src: tavukSisDurumImg },
-  { name: 'Kuşbaşı', desc: 'Özel marine edilmiş lokum kıvamında kuzu eti', src: null },
+  { name: 'Kuşbaşı', desc: 'Özel marine edilmiş lokum kıvamında kuzu eti', src: kusbasiMenuImg },
 ]
 
 const izgaralar = [
-  { name: 'Ali Nazik', note: '1,5 porsiyon', src: null },
+  { name: 'Ali Nazik', note: '1,5 porsiyon', src: alinazikMenuImg },
   { name: 'Külbastı', note: '1,5 porsiyon', src: null },
   { name: 'Lokum Kebap', note: '180 gr', src: null },
   { name: 'Ciğer', note: null, src: cigerMenuImg },
@@ -89,7 +89,7 @@ const izgaralar = [
   { name: 'Sıcak Ezme Üstü Kebap', note: '1,5 porsiyon', src: null },
   { name: 'Kuzu Kaburga', note: null, src: null },
   { name: 'Kazbaşı', note: '1,5 porsiyon', src: null },
-  { name: 'Kuşbaşı', note: '1,5 porsiyon', src: null },
+  { name: 'Kuşbaşı', note: '1,5 porsiyon', src: kusbasiMenuImg },
   { name: 'Patlıcan Kebap', note: '1,5 porsiyon', src: null },
   { name: 'Beyti', note: '1,5 porsiyon', src: null },
   { name: 'Tavuk Şiş', note: null, src: tavukSisMenuImg },
